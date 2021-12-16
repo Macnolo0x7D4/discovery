@@ -18,6 +18,12 @@ object VelocitiesCalculator {
         val velocities = IntArray(2)
         velocities[0] = (clamp(calcA(angle), -1.0, 1.0) * strength * 255).toInt()
         velocities[1] = (clamp(calcB(angle), -1.0, 1.0) * strength * 255).toInt()
+
+        if (strength < 0.3) {
+            velocities[0] = 0
+            velocities[1] = 0
+        }
+
         return velocities
     }
 }
